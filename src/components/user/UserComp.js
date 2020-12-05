@@ -2,13 +2,12 @@ import React, {Component} from 'react';
 import './user.css'
 class UserComp extends Component {
     render() {
-        // let value=this.props.value
-        let {value, clsName}=this.props
+        let {item, clsName}=this.props;
         return (
             <div className={clsName}>
-                <h2>
-                    {value.name} | {value.age} | {value.status.toString()}
-                </h2>
+                <h3>
+                    {item.id}-{item.name}-{item.username}-{item.address.city}
+                </h3>
             </div>
         );
     }
