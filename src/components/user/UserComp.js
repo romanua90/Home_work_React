@@ -6,7 +6,7 @@ class UserComp extends Component {
         return (
             <div className={clsName}>
                 <h3>
-                    {item.id}-{item.name}-{item.username}-{item.address.city}
+                    {item.id}-{item.title}-{item.body}
                 </h3>
             </div>
         );

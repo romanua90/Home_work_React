@@ -4,7 +4,7 @@ import UserComp from "../user/UserComp";
 class AllUsers extends Component {
     state={users:[]};
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch('https://jsonplaceholder.typicode.com/posts')
             .then(value=> value.json())
             .then(usersFromAPI=> {
                 this.setState({users:usersFromAPI})
