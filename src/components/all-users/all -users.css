@@ -1,0 +1,10 @@
+.one{
+    background: yellow;
+
+}
+.two{
+    background: blue;
+}
+.one>button{
+    display: none;
+}
