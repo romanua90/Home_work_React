@@ -1,10 +1,13 @@
 .one{
     background: yellow;
-
 }
 .two{
     background: blue;
 }
-.one>button{
+.post{
+    background: green;
+}
+.post>button{
+    background: green;
     display: none;
 }

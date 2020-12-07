@@ -1,0 +1,13 @@
+.one{
+    background: yellow;
+}
+.two{
+    background: blue;
+}
+.post{
+    background: green;
+}
+.post>button{
+    background: green;
+    display: none;
+}
