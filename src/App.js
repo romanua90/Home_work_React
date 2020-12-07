@@ -9,7 +9,7 @@ class App extends Component {
 
         return (
             <div>
-                <AllComments/>
+                <AllPosts/>
             </div>
         );
     }

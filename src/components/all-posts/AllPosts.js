@@ -1,21 +1,19 @@
 import React, {Component} from 'react';
 import './allpost.css'
 import Post from "../post/post";
+import {PostService} from "../services/PostService";
 
 
 class AllPosts extends Component {
-    state = {posts: [], classState:'one', chosenPost:null};
+    state = {posts: [], classState: 'one', chosenPost: null};
     flag = 'false';
+    PostService = new PostService();
 
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(value => value.json())
-            .then(postsFromAPI => {
-                this.setState({posts: postsFromAPI})
-            });
+        this.PostService.getAllPost().then(value => this.setState({posts:value}));
     }
 
-    changeColor=()=> {
+    changeColor = () => {
         if (this.flag) {
             this.setState({classState: 'one'})
         } else {
@@ -23,9 +21,8 @@ class AllPosts extends Component {
         }
         this.flag = !this.flag;
     }
-    selectThisPost=(id)=>{
-        let chosen=this.state.posts.find(value=>value.id===id);
-        this.setState({chosenPost:chosen});
+    selectThisPost = (id) => {
+        this.PostService.getPostbById(id).then(value=>this.setState({chosenPost:value}))
     }
 
     render() {
