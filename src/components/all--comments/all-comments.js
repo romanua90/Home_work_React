@@ -34,10 +34,10 @@ class AllComments extends Component {
             <div>
                 <h1 onClick={this.changeColor} className={classState}> All Comments</h1>
                 {
-                    posts.map(value => (<Comment item={value} key={value.id} selectThisPost={this.selectThisPost}/>))
+                    posts.map(value => (<Comment item={value} key={value.id} selectThisPost={this.selectThisPost} isShowButton={true}/>))
                 }
                 <hr/>
-                {chosenPost && <Comment item={chosenPost} clsName={'post'}/>}
+                {chosenPost && <Comment item={chosenPost} isShowButton={false}/>}
             </div>
         );
     }
