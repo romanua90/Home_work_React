@@ -4,10 +4,10 @@
 .two{
     background: blue;
 }
-.post{
+.comment{
     background: green;
 }
-.post>button{
+.comment>button{
     background: green;
     display: none;
 }

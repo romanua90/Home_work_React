@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './allpost.css'
 import Post from "../post/post";
-import {PostService} from "../services/PostService";
+import {PostService} from "../../services/PostService";
 
 
 class AllPosts extends Component {
@@ -10,7 +10,8 @@ class AllPosts extends Component {
     PostService = new PostService();
 
     componentDidMount() {
-        this.PostService.getAllPost().then(value => this.setState({posts:value}));
+        this.PostService.getAllPost()
+            .then(value => this.setState({posts:value}));
     }
 
     changeColor = () => {
@@ -22,7 +23,8 @@ class AllPosts extends Component {
         this.flag = !this.flag;
     }
     selectThisPost = (id) => {
-        this.PostService.getPostbById(id).then(value=>this.setState({chosenPost:value}))
+        this.PostService.getPostbById(id)
+            .then(value=>this.setState({chosenPost:value}))
     }
 
     render() {

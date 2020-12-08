@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import AllPosts from "./components/all-posts/AllPosts";
-import AllComments from "./components/all--comments/all-comments";
+import AllComments from "./components/all-comments/AllComments";
 
 
 class App extends Component {
@@ -9,6 +9,7 @@ class App extends Component {
 
         return (
             <div>
+                <AllComments/>
                 <AllPosts/>
             </div>
         );
