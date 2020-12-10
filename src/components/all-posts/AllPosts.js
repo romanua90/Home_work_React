@@ -43,7 +43,7 @@ class AllPosts extends Component {
                 {chosenPost && <Post item={chosenPost} clsName={'post'}/>}
                 <hr/>
 
-
+<div className={'one'}>
                     <Switch>
                         <Route path={`${url}/:id`} render={(props) => {
                             let {match: {params: {id}}} = props;
@@ -51,6 +51,7 @@ class AllPosts extends Component {
                         }}/>
                     </Switch>
                 <hr/>
+                </div>
             </div>
         );
     }
