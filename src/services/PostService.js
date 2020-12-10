@@ -1,14 +1,11 @@
 export class PostService{
     url='https://jsonplaceholder.typicode.com/posts';
-    getAllPost(){
-        return fetch(this.url)
+    async getAllPost(){
+        return await fetch(this.url)
+            .then (value => value.json())
+               }
+    async getPostbById(id){
+        return await fetch(`${this.url}/${id}`)
             .then(value => value.json())
-            .then(postsFromAPI => {return  postsFromAPI})
-
-    }
-    getPostbById(id){
-        return fetch(`${this.url}/${id}`)
-            .then(value => value.json())
-            .then(value=>value);
     }
 }
