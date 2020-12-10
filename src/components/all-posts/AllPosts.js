@@ -3,13 +3,7 @@ import './allpost.css'
 import Post from "../post/post";
 import {PostService} from "../../services/PostService";
 import FullPost from "../full-post/FullPost";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-    withRouter
-} from "react-router-dom";
+import {Route, Switch, withRouter} from "react-router-dom";
 
 
 class AllPosts extends Component {
