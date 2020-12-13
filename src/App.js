@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import AllPosts from "./components/all-posts/AllPosts";
 import AllComments from "./components/all-comments/AllComments";
+
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link
 } from "react-router-dom";
+import AllUsers from "./components/all-users/AllUsers";
 
 class App extends Component {
 
@@ -15,6 +17,9 @@ class App extends Component {
         return (
             <Router>
                 <div>
+                    <div><Link to={'/users'}>
+                        users
+                    </Link></div>
                     <div><Link to={'/posts'}>
                         posts
                     </Link></div>
@@ -24,6 +29,9 @@ class App extends Component {
                     </div>
 
                     <Switch>
+                        <Route path={'/users'} render={() => {
+                            return <AllUsers/>
+                        }}/>
                     <Route path={'/posts'} render={() => {
                         return <AllPosts/>
                     }}/>
@@ -31,7 +39,6 @@ class App extends Component {
                         return <AllComments/>
                     }}/>
                     </Switch>
-
 
                 </div>
             </Router>
