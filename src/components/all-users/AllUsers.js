@@ -5,7 +5,7 @@ class AllUsers extends Component {
     state={users:[]}
     UserService=new UserService()
     componentDidMount() {
-        .then(value=>this.UserService.getAllUsers());
+        this.UserService.getAllUsers();
         .then(this.setState({users:value}))
     }
 
