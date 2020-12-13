@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import './allpost.css'
 import Post from "../post/post";
 import {PostService} from "../../services/PostService";
-import FullPost from "../full-post/FullPost";
+import FullPost from "../full/FullPost";
 import {Route, Switch, withRouter} from "react-router-dom";
 
 
 class AllPosts extends Component {
     state = {posts: [], classState: 'one', chosenPost: null};
     flag = 'false';
-    PostService = new PostService();
+    PostService=new PostService();
 
     async componentDidMount() {
         let posts = await this.PostService.getAllPost()

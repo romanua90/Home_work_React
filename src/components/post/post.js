@@ -1,11 +1,5 @@
 import React, {Component} from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-    withRouter
-} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 
 class Post extends Component {
 
@@ -17,7 +11,7 @@ class Post extends Component {
                 <p><b>id:   </b>{item.id}</p>
                 <p><b>title:    </b>{item.title}</p>
                 <p><b>body      </b>{item.body}</p>
-                <Link to={`${url}/${item.id}`}>info</Link>
+                <Link to={`${url}/${item.id}`}>full info</Link>
                 <button onClick={()=>selectThisPost(item.id)}>Chose me</button>
                 <hr/>
             </div>

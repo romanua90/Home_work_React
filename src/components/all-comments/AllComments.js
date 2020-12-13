@@ -1,17 +1,18 @@
 import React, {Component} from 'react';
-import Post from "../post/post";
 import './allcommments.css'
 import Comment from "../comment/Comment";
 import {CommentService} from "../../services/CommentService";
+import FullComment from "../full/FullComment";
+import {Route, Switch, withRouter} from "react-router-dom";
 
 class AllComments extends Component {
     state = {comments: [], classState: 'one', chosenComment: null};
     flag = 'false';
     CommentService = new CommentService();
 
-    componentDidMount() {
-        this.CommentService.getAllComments()
-            .then(value => this.setState({comments: value}))
+    async componentDidMount() {
+        let comments= await this.CommentService.getAllComments()
+            this.setState({comments: comments})
     }
 
 
@@ -30,6 +31,7 @@ class AllComments extends Component {
 
     render() {
         let {comments, chosenComment, classState} = this.state;
+        let {match:{url}}=this.props;
         return (
             <div>
                 <h1 onClick={this.changeColor} className={classState}> All Comments</h1>
@@ -40,9 +42,17 @@ class AllComments extends Component {
                 }
                 <hr/>
                 {chosenComment && <Comment item={chosenComment} isShowButton={false} clsName={'one'}/>}
+                <div className={'comment'}>
+                    <Switch>
+                        <Route path={`${url}/:id`} render={(props) => {
+                            let {match:{params:{id}}}= props;
+                            return  <FullComment id={id} key={id}/>
+                        }}/>
+                       </Switch>
+                </div>
             </div>
         );
     }
 }
 
-export default AllComments;
+export default withRouter(AllComments);
