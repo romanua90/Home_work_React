@@ -8,7 +8,7 @@ class Users extends Component {
         const {items}=this.props;
         return (
             <div>
-                <FullUsers items={items} />
+                <FullUsers items={items}  />
             </div>
         );
     }

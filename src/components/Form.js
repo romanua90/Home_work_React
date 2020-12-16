@@ -12,7 +12,7 @@ class Form extends Component {
                 <form action={'/savedata'} onSubmit={this.viewUser} ref={this.myForm}>
                     <input type='number' onInput={this.commitState} value={this.state.inputValue}/>
                     <button>send</button>
-                    {/*<div> {inpVal.id} - {inpVal.username}</div>*/}
+                    <div> {inpVal.id} - {inpVal.username}</div>
                 </form>
 
 
@@ -34,8 +34,7 @@ class Form extends Component {
         e.preventDefault();
         let {item} = this.props;
         let input1 = e.target[0].value;
-        let arr=item.find(value=> value.id===input1)
-        console.log(arr);
+        let arr=item.find((value)=> value.id===+input1)
         this.setState({inpVal: arr})
     }
 
