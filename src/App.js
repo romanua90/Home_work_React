@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Users from "./components/Users";
+import Form from "./components/Form";
 
 class App extends Component {
 state={users:[]};
@@ -14,6 +15,7 @@ const {users}=this.state;
         return (
            <div>
     <Users items={users}/>
+    <Form item={users}/>
            </div>
         );
     }
