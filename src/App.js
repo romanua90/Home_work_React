@@ -15,7 +15,7 @@ const {users}=this.state;
         return (
            <div>
     <Users items={users}/>
-    <Form item={users}/>
+    <Form item={users} key={users}/>
            </div>
         );
     }
