@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import User from "./components/User";
+import FullUser from "./components/FullUser";
 
 class App extends Component {
     myForm = React.createRef();
-    state = {inputValue: '', users: [], flag: ''};
+    state = {inputValue: '', users: [], flag:'',isShowAll:false};
 
     componentDidMount() {
         fetch('https://jsonplaceholder.typicode.com/users')
@@ -12,17 +13,26 @@ class App extends Component {
     }
 
     render() {
-        let {users, inputValue, flag} = this.state;
+        let {users, inputValue, flag, isShowAll} = this.state;
         return (
             <div>
 
-                <form action={'/savedata'} onSubmit={this.save} ref={this.myForm}>
+                <form action={'/savedata'} onSubmit={this.fullUser} ref={this.myForm}>
                     <input value={this.state.inputValue} type='number' onInput={this.commitState}/>
                     <button>Show User</button>
+                    <button onClick={this.showAll}>Show All Users</button>
+                    <button onClick={this.clearAll}>Clear display</button>
                 </form>
 
                 <div>
-                    {flag && <User item={users.find(value => value.id === +flag)} key={inputValue}/>}
+                    {flag && <FullUser item={users.find(value => value.id === +flag)} key={inputValue}/>}
+
+                </div>
+                <div>
+                    {isShowAll &&
+                    users.map(value =>
+                    <User item={value} key={value.id} />)
+                    }
 
                 </div>
             </div>
@@ -32,12 +42,20 @@ class App extends Component {
     commitState = (e) => {
         this.setState({inputValue: e.target.value});
     }
-    save=(e)=>{
+    fullUser=(e)=>{
         e.preventDefault();
         this.setState({flag: e.target[0].value});
 
     }
+    showAll=(e)=>{
+        e.preventDefault();
+        this.setState({isShowAll:true})
 
+}
+    clearAll=()=>{
+        window.location.reload();
+
+    }
 
 }
 
