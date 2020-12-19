@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import Users from "./components/Users";
-import Form from "./components/Form";
 
 class App extends Component {
-state={users:[]};
+myForm=React.createRef();
+state={users:[], inputValue:''};
 componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
         .then(value => value.json())
@@ -11,11 +10,17 @@ componentDidMount() {
 }
 
     render() {
-const {users}=this.state;
+    let {users, inputValue}=this.state;
         return (
            <div>
-    <Users items={users}/>
-    <Form item={users} key={users}/>
+            <form action={'/savedata'} onSubmit={this.save} ref={this.myForm}>
+                <input value={this.state.inputValue} type={'number'} onInput={this.commitState}></input>
+                <button>save</button>
+            </form>
+               <div>
+                   {inputValue users.find(value => value.id===+inputValue)}
+
+               </div>
            </div>
         );
     }
