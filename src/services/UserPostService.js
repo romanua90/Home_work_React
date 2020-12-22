@@ -1,11 +1,9 @@
-export default class UserPostService extends Component {
-    render() {
-        return (
-            <div>
+export default class UserPostService {
 
-            </div>
-        );
+    getAllUsers() {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(value => value.json())
+            .then(value => this.setState({users: value}))
     }
-}
 
-export default UserPostService;
+}

@@ -1,18 +1,14 @@
 import React, {Component} from 'react';
 import User from "./components/User";
 import FullUser from "./components/FullUser";
+import UserPostService from "./services/UserPostService";
 
 class App extends Component {
     myForm = React.createRef();
     state = {inputValue: '', users: [], flag:'',isShowAll:false};
-
-    componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(value => value.json())
-            .then(value => this.setState({users: value}))
-    }
-
+    UserPostService=new UserPostService();
     render() {
+
         let {users, inputValue, flag, isShowAll} = this.state;
         return (
             <div>
