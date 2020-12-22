@@ -1,7 +1,7 @@
 export default class UserPostService {
 
     getAllUsers() {
-        fetch('https://jsonplaceholder.typicode.com/users')
+       return  fetch('https://jsonplaceholder.typicode.com/users')
             .then(value => value.json())
             .then(value => value)
             }
