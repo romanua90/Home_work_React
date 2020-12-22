@@ -7,6 +7,11 @@ class App extends Component {
     myForm = React.createRef();
     state = {inputValue: '', users: [], flag:'',isShowAll:false};
     UserPostService=new UserPostService();
+    componentDidMount() {
+        let users=this.UserPostService.getAllUsers();
+        this.setState({users:users})
+    }
+
     render() {
 
         let {users, inputValue, flag, isShowAll} = this.state;
