@@ -10,6 +10,7 @@ class App extends Component {
     componentDidMount() {
         let users=this.UserPostService.getAllUsers();
         this.setState({users:users})
+        console.log(this.state.users)
     }
 
     render() {
