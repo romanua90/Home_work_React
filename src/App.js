@@ -45,6 +45,10 @@ class App extends Component {
                     }
 
                 </div>
+                <div>
+                    this.tick
+                    {/*todo*/}
+                </div>
             </div>
         );
     }
@@ -72,6 +76,9 @@ class App extends Component {
         let userId= +this.myForm.current[0].value;
         this.UserPostService.getAllPostsforUser(userId)
             .then(value => this.setState({UserPosts:value}))
+    }
+    tick=()=>{
+
     }
 
 }
