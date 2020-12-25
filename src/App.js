@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import Users from "./components/Users";
 import Form from "./components/Form";
+import userService from "./services/userService";
 
 class App extends Component {
+    UserService=new userService();
 state={users:[]};
 componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then(value => value.json())
-        .then(value=> this.setState({users:value}))
+    this.UserService.
 }
 
     render() {

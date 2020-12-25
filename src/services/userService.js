@@ -1,7 +1,7 @@
 export default function userService (){
-    return (
-        <div>
-            
-        </div>
-    );
+    getAllUsers()=>{
+        return fetch('https://jsonplaceholder.typicode.com/users')
+            .then(value => value.json())
+            .then(value => value)
+    }
 }
