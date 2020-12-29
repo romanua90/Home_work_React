@@ -31,18 +31,19 @@ export default function App() {
         username:null,
     }
    const [state, dispatch]=useReducer(reducer,initialState);
-    const [user, setUser] = useState();
     const [counter, setCounter] = useState(1)
 
-    useEffect(() => {
-           fetch(`https://jsonplaceholder.typicode.com/users/${counter}`)
-                .then(response => response.json())
-                .then((json)=> {
-                  dispatch({type:"SET_USER", payload:json});
-            });
-
-        },
-        [counter])
+        useEffect(() => {
+                fetch(`https://jsonplaceholder.typicode.com/users/${counter}`)
+                    .then(response => response.json())
+                    .then((json) => {
+                        dispatch({type: "SET_USER", payload: json});
+                    });
+               return () => {
+                    console.log('unmount');
+                };
+            },
+            [counter])
 
     const onClickIncHandler = () => {
         setCounter((prevState) => (prevState + 1));
