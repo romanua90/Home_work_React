@@ -1,23 +1,23 @@
-import React, { useState, useEffect, useReducer} from 'react';
+import React, {useState, useEffect, useReducer} from 'react';
 
-const reducer=(state, action)=>{
-    switch (action.type){
-        case "SET_USER":{
+const reducer = (state, action) => {
+    switch (action.type) {
+        case "SET_USER": {
             return action.payload;
         }
-        case "CHANGE_USER_ID":{
+        case "CHANGE_USER_ID": {
             return {
                 ...state,
                 id: action.payload
             };
         }
-        case "CHANGE_USER_NAME":{
+        case "CHANGE_USER_NAME": {
             return {
                 ...state,
                 name: action.payload
             };
         }
-        default:{
+        default: {
             console.log('Not found case for action!')
             return state;
         }
@@ -25,22 +25,21 @@ const reducer=(state, action)=>{
 }
 
 export default function App() {
-    const initialState={
+    const initialState = {
         id: null,
         name: null,
-        username:null,
+        username: null,
     }
-   const [state, dispatch]=useReducer(reducer,initialState);
+    const [state, dispatch] = useReducer(reducer, initialState);
     const [user, setUser] = useState();
     const [counter, setCounter] = useState(1)
 
     useEffect(() => {
-           fetch(`https://jsonplaceholder.typicode.com/users/${counter}`)
+            fetch(`https://jsonplaceholder.typicode.com/users/${counter}`)
                 .then(response => response.json())
-                .then((json)=> {
-                  dispatch({type:"SET_USER", payload:json});
-            });
-
+                .then((json) => {
+                    dispatch({type: "SET_USER", payload: json});
+                });
         },
         [counter])
 
@@ -53,10 +52,10 @@ export default function App() {
 
     }
     const onClickNameHandler = () => {
-        dispatch({type:'CHANGE_USER_NAME', payload: state.name.toUpperCase()+'____Changed' })
+        dispatch({type: 'CHANGE_USER_NAME', payload: state.name.toUpperCase() + '____Changed'})
     }
-    const onClickIdHandler = ()=>{
-        dispatch({type:'CHANGE_USER_ID', payload: Math.floor(Math.random()*500)})
+    const onClickIdHandler = () => {
+        dispatch({type: 'CHANGE_USER_ID', payload: Math.floor(Math.random() * 500)})
     }
     return (
         <div>
@@ -67,7 +66,7 @@ export default function App() {
                     <h3>User id: {state.id}</h3>
                     <h3>User name: {state.name}</h3>
                     <h3>User username: {state.username}</h3>
-                    {/*<h3>User city: {state.address.city}</h3>*/}
+                    <h3>User city: {state.address.city}</h3>
                 </div>
             )
             }
@@ -75,7 +74,6 @@ export default function App() {
             <button onClick={onClickDecHandler}>Decrement</button>
             <button onClick={onClickNameHandler}>Change User name</button>
             <button onClick={onClickIdHandler}>Change User id</button>
-
 
 
         </div>
