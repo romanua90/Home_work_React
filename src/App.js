@@ -3,6 +3,7 @@ import React, {useState, useEffect, useReducer} from 'react';
 const reducer = (state, action) => {
     switch (action.type) {
         case "SET_USER": {
+            console.log(action.payload);
             return action.payload;
         }
         case "CHANGE_USER_ID": {
@@ -29,6 +30,7 @@ export default function App() {
         id: null,
         name: null,
         username: null,
+        city: null,
     }
     const [state, dispatch] = useReducer(reducer, initialState);
     const [user, setUser] = useState();
@@ -60,13 +62,13 @@ export default function App() {
     return (
         <div>
             <h1>Counter: {counter}</h1>
-            {!!state &&
+            {!!state.company &&
             (
                 <div>
                     <h3>User id: {state.id}</h3>
                     <h3>User name: {state.name}</h3>
                     <h3>User username: {state.username}</h3>
-                    <h3>User city: {state.address.city}</h3>
+                    <h3>User company: {state.company.name}</h3>
                 </div>
             )
             }
