@@ -7,6 +7,7 @@ import {Provider} from "react-redux";
 import {createStore} from "redux";
 
 const initialState={counter:1}
+
 const reducer = (state=initialState, action) => {
     switch (action.type) {
         case "SET_USER": {
@@ -26,6 +27,7 @@ const reducer = (state=initialState, action) => {
             };
         }
         case "INC_COUNTER":{
+            console.log(state);
             return {
                 ...state,
                 counter: state.counter+1
