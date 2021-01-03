@@ -1,41 +1,43 @@
-import React, {Component} from 'react';
-import UserComp from "./components/user/UserComp";
-
-class App extends Component {
-    users = [
-        {name: 'vasya', age: 31, status: false},
-        {name: 'petya', age: 30, status: true},
-        {name: 'kolya', age: 29, status: true},
-        {name: 'olya', age: 28, status: false},
-        {name: 'max', age: 30, status: true},
-        {name: 'anya', age: 31, status: false},
-        {name: 'oleg', age: 28, status: false},
-        {name: 'andrey', age: 29, status: true},
-        {name: 'masha', age: 30, status: true},
-        {name: 'olya', age: 31, status: false},
-        {name: 'max', age: 31, status: true}
-    ];
-    render() {
-
-        return (
-            <div>
-                {
-                    this.users.map((value,index)=>{
-                        let name='';
-                        if(index%2){
-                            name='second';
-                        }
-                        else{
-                            name='main';
-                        }
-                        return (<UserComp value={value} key={index} clsName={name}/>)
-                    })
-                }
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux'
 
 
-            </div>
-        );
-    }
+export default function App() {
+    const state = useSelector((state)=>state);
+    console.log(state);
+    const counter = useSelector(({counter}) => counter)
+    const dispatch = useDispatch();
+    //
+    useEffect(() => {
+            fetch(`https://jsonplaceholder.typicode.com/users/${counter}`)
+                .then(response => response.json())
+                .then((json) => {
+                    dispatch({type: "SET_USER", payload: json});
+                });
+        },
+        [counter])
+    return (
+        <div>
+            <h1>Counter: {counter}</h1>
+            {!!state &&
+            (
+                <div>
+                    <h3>User id: {state.id}</h3>
+                    <h3>User name: {state.name}</h3>
+                    <h3>User username: {state.username}</h3>
+                    {/*<h3>User company: {state.company.name}</h3>*/}
+                </div>
+            )
+            }
+            <button onClick={() => dispatch({type: 'INC_COUNTER'})}>Increment</button>
+            <button onClick={() => dispatch({type: 'DEC_COUNTER'})}>Decrement</button>
+            <button onClick={() => dispatch({type: 'RESET'})}>RESET</button>
+            <button onClick={() => dispatch({type: 'CHANGE_USER_ID ', payload: Math.floor(Math.random() * 500)})}>Change
+                User id
+            </button>
+
+
+        </div>
+    );
 }
 
-export default App;
