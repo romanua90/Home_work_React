@@ -6,10 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import {createStore} from "redux";
 
-const initialState={counter:0,
-    id: null,
-    name: null,
-    username:null,}
+const initialState={counter:1}
 const reducer = (state=initialState, action) => {
     switch (action.type) {
         case "SET_USER": {
