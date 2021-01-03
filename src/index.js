@@ -3,10 +3,59 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from "react-redux";
+import {createStore} from "redux";
 
+const initialState={counter:0}
+const reducer = (state=initialState, action) => {
+    switch (action.type) {
+        case "SET_USER": {
+            console.log(action.payload);
+            return action.payload;
+        }
+        case "CHANGE_USER_ID": {
+            return {
+                ...state,
+                id: action.payload
+            };
+        }
+        case "CHANGE_USER_NAME": {
+            return {
+                ...state,
+                name: action.payload
+            };
+        }
+        case "INC_COUNTER":{
+            return {
+                ...state,
+                counter: state.counter+1
+            };
+        }
+        case "DEC_COUNTER":{
+            return {
+                ...state,
+                counter: state.counter-1
+            };
+        }
+        case "RESET":{
+            return {
+                ...state,
+                counter: 0
+            };
+        }
+        default: {
+            console.log('Not found case for action!')
+            return state;
+        }
+    }
+}
+
+const store=createStore(reducer);
 ReactDOM.render(
   <React.StrictMode>
+      <Provider store={store}>
     <App />
+      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
