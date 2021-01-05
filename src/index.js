@@ -11,8 +11,10 @@ const initialState={counter:1}
 const reducer = (state=initialState, action) => {
     switch (action.type) {
         case "SET_USER": {
-            console.log(action.payload);
-            return action.payload;
+            return {
+                ...state,
+                ...action.payload
+            };
         }
         case "CHANGE_USER_ID": {
             return {
@@ -27,19 +29,19 @@ const reducer = (state=initialState, action) => {
             };
         }
         case "INC_COUNTER":{
-            console.log(state);
             return {
                 ...state,
-                counter: state.counter+1
+                counter: (state.counter<10) ? state.counter+1 : state.counter
             };
         }
         case "DEC_COUNTER":{
             return {
                 ...state,
-                counter: state.counter-1
+                counter: (state.counter>1) ? state.counter-1 : state.counter
             };
         }
         case "RESET":{
+            console.log(state);
             return {
                 ...state,
                 counter: 0
