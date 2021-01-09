@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import {incCounter,decCounter,resetCounter, setUsers, fetchUsers} from "./redux";
+import {incCounter,decCounter,resetCounter, fetchUsers} from "./redux";
 
 
 
 export default function App() {
-    const state = useSelector((state)=>state);
     const {counter, users} = useSelector(
         ({counter: { counter }, users: { users } }) => ({counter, users} ));
     const dispatch = useDispatch();
@@ -13,7 +12,7 @@ export default function App() {
 
     //
     useEffect(() => {
-            fetchUsers(dispatch);
+            dispatch(fetchUsers());
         },
         [dispatch]);
 
