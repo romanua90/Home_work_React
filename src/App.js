@@ -29,8 +29,8 @@ export default function App() {
     }, [])
     return (
         <div className='App'>
-            {products.length}
             <Header/>
+            <br /><br /><br /><br /><br />
             <ProductList products={products}/>
         </div>
     );
