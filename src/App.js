@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback} from 'react';
+import React, {useEffect, useState, useMemo} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import {Header} from "./components/header";
 import {ProductList} from "./components/product-list";
@@ -14,6 +14,7 @@ export default function App() {
             products
         })
     );
+
     const dispatch = useDispatch();
     const {productService} = useServices();
     // const fetchData = useCallback(async () => {
